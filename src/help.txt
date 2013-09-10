@@ -1,0 +1,78 @@
+============================= 使 用 说 明 ===============================
+
+1. 务必保证机器上安装了JRE1.5, 可以到http://java.sun.com去下载。
+2. 务必保证机器上安装了Office Word(2000, or XP, or 2003)
+3. 请检查文件夹/lib下是否有log4j.jar, jacob.jar, swt-jface.jar这三个jar包，如果没有请向本人(missionstart@126.com)索取。
+4. 输入文件-即SQL脚本必须是用Navicat或MySQLFront或Toad导出的。
+
+对于MySQL, 总共三步操作：
+一、点DataDictionaryTool版本号.bat打开图形界面。
+二、MySQL->载入sql脚本文件
+三、MySQL->生成数据字典
+
+对于Oracle,也是三步操作
+一、点DataDictionaryTool版本号.bat打开图形界面。
+二、Oracle->载入sql脚本文件
+三、Oracle->生成数据字典
+
+
+问：什么时候使用A1,A2?
+如果一张表对应一个文件，请使用MySQL->A1, MySQL->A2(支持同时处理多个文件)
+
+问：什么时候使用B1，B2？
+如果数据库的所有表结构都在一个文件中，请使用MySQL->B1,MySQL->B2
+
+问：为什么汉字乱码了？
+那是因为打开SQL脚本文件时使用的编码方式不对。默认是使用的系统编码(一般为GBK)
+可以在打开文件前指定一下编码方式，方法是从Load后面的下拉框中换一种编码试试(一般选择留空或UTF-8);
+
+==============================  更新日志 =====================================
+23:18 2007-6-11
+重新调整了一下界面布局，增加了Help->查看帮助文档的功能
+
+
+14:19 2007-6-11
+发布0.2.1预览版本，增加了MySQL批处理功能,能同时处理任意个表
+Oracle的尚未更新
+
+15:11 2007-5-9
+今天发布0.2.0beta版本，增加对Oracle支持
+Oracle: 增加对PK,FK,UNIQUE支持
+注意：对于Toad, create script时，要勾上List constraints following table columns这一选项
+
+18:45 2007-4-26
+发布0.1.1版
+加入了系统菜单.
+使用NewWord类。花了很多时间研究jacob和 VBA 宏.
+解决了字段中有default '12.242'则无法读出comment的问题。
+优化了输出显示，多个\会先转成一个\,然后\r\n或\n之类的符号显示为回车
+默认会读c:/dict2.doc这个模板，没有则不使用模板。
+应该改进为将模板放到jar包下。　执行程序如果在c盘找不到模板就先将这个模板流写到c盘。然后使用该模板。
+因为时间的原因。
+明天不做也不更新了。
+明天要好好干活.
+
+
+===============================  English Version =====================================
+
+To cut project's size, the needed jar file 
+[log4j.jar, jacob.jar, swt-jface.jar]
+under ./lib may not all be provided.
+
+--Requirements:
+1. JRE1.5 or higher version is required
+2. MS office word(2000, xp or 2003) is required.
+
+Version 0.2.x
+1. support sql schema dumped by Navicat/MySQLFront/Toad.
+
+Version 0.1.x
+1. support sql schema dumped by Navicat/MySQLFront.
+
+Future Features(in no particular order):
+1. you can choose a template to add a table head for output.
+2. you can customize the output columns
+3. add Excel support
+4. The core regular expression must be strictly refered to <<MySQL5.0 Reference Manual>>
+chapter 13.1.5, thus this tool can support all MySQL DDL Syntax;
+5. add batch file support, tables will be generated in one document seperated by their name
